@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    .form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: inline-block;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 300px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      padding: 8px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .results {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .result-link {
+      display: block;
+      margin-bottom: 10px;
+      color: #007bff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .result-score {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="form">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.search.label }}
+      {{ form.search() }}
+      {{ form.submit() }}
+    </form>
+  </div>
+  <div class="results">
+    {% for result in results %}
+    <a class="result-link" href="{{ result['Question Link'] }}">{{ result['Question Link'] }}</a>
+    <p class="result-score">Score: {{ result['Score'] }}</p>
+    {% endfor %}
+  </div>
+</body>
+</html>
