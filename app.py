@@ -9,9 +9,9 @@ from wtforms import StringField, SubmitField
 
 def load_vocab():
     vocab = {}
-    with open("vocab.txt", "r") as f:
+    with open("vocab.txt", "r", encoding="utf-8") as f:
         vocab_terms = f.readlines()
-    with open("idf-values.txt", "r") as f:
+    with open("idf-values.txt", "r", encoding="utf-8") as f:
         idf_values = f.readlines()
     for (term, idf_value) in zip(vocab_terms, idf_values):
         vocab[term.rstrip()] = int(idf_value.rstrip())
@@ -19,14 +19,14 @@ def load_vocab():
 
 
 def load_document():
-    with open("document.txt", "r") as f:
+    with open("document.txt", "r", encoding="utf-8") as f:
         documents = f.readlines()
     return documents
 
 
 def load_inverted_index():
     inverted_index = {}
-    with open('inverted-index.txt', 'r') as f:
+    with open('inverted-index.txt', 'r', encoding='latin-1') as f:
         inverted_index_terms = f.readlines()
     for row_num in range(0, len(inverted_index_terms), 2):
         term = inverted_index_terms[row_num].strip()
@@ -36,7 +36,7 @@ def load_inverted_index():
 
 
 def load_link_of_qs():
-    with open("lc_problems.txt", "r") as f:
+    with open("lc_problems.txt", "r", encoding="utf-8") as f:
         links = f.readlines()
     return links
 
